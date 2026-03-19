@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="蜡笔小新主题浪漫小站 - 记录属于我们的搞怪与浪漫">
+  <title>蜡笔小新主题小站</title>
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <style>
+    /* 蜡笔小新配色方案 */
+    :root {
+      --shin-red: #FF5252;
+      --shin-yellow: #FFD740;
+      --shin-blue: #448AFF;
+      --shin-green: #69F0AE;
+      --shin-bg: #FFF9C4;
+      --shin-border: #333333;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'ZCOOL KuaiLe', 'Microsoft YaHei', cursive, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--shin-bg);
+      color: var(--shin-border);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* 背景装饰：睡衣图案 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle, var(--shin-blue) 10px, transparent 11px),
+        linear-gradient(45deg, var(--shin-yellow) 15px, transparent 16px);
+      background-size: 100px 100px;
+      opacity: 0.05;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Header 样式 */
+    header {
+      background: var(--shin-red);
+      padding: 15px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 5px solid var(--shin-border);
+      box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      color: white;
+      text-shadow: 3px 3px 0px var(--shin-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header h1 img {
+      height: 40px;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 8px 15px;
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      border: 2px solid transparent;
+    }
+
+    nav a:hover {
+      background: var(--shin-yellow);
+      color: var(--shin-border);
+      border: 2px solid var(--shin-border);
+      transform: translateY(-2px);
+    }
+
+    /* 页面容器 */
+    .page {
+      display: none;
+      padding: 60px 20px;
+      text-align: center;
+      min-height: calc(100vh - 80px);
+      animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes bounceIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Hero 部分 */
+    .hero {
+      padding: 80px 20px;
+      background: white;
+      border: 5px solid var(--shin-border);
+      border-radius: 30px;
+      margin: 40px auto;
+      max-width: 900px;
+      position: relative;
+      box-shadow: 10px 10px 0px var(--shin-yellow);
+    }
+
+    .hero h2 {
+      font-size: 48px;
+      margin: 0 0 20px 0;
+      color: var(--shin-red);
+      text-shadow: 2px 2px 0px #eee;
+    }
+
+    .hero p {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .hero-img {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+
+    /* 按钮样式 */
+    .btn {
+      display: inline-block;
+      padding: 15px 40px;
+      background: var(--shin-yellow);
+      color: var(--shin-border);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 20px;
+      border: 4px solid var(--shin-border);
+      box-shadow: 5px 5px 0px var(--shin-border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0px var(--shin-border);
+      background: #ffeb3b;
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0px var(--shin-border);
+    }
+
+    /* 恋爱天数 */
+    .days-container {
+      background: white;
+      border: 5px solid var(--shin-border);
+      border-radius: 30px;
+      padding: 40px;
+      display: inline-block;
+      box-shadow: 10px 10px 0px var(--shin-blue);
+      margin-top: 20px;
+    }
+
+    .days {
+      font-size: 80px;
+      color: var(--shin-red);
+      margin: 20px 0;
+      text-shadow: 4px 4px 0px #eee;
+    }
+
+    /* 卡片容器 */
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      width: 300px;
+      border-radius: 25px;
+      border: 4px solid var(--shin-border);
+      box-shadow: 8px 8px 0px var(--shin-green);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .card::after {
+      content: "⭐";
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      font-size: 30px;
+    }
+
+    .card h3 {
+      margin: 0 0 15px 0;
+      font-size: 24px;
+      color: var(--shin-blue);
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .card:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    /* 图库 */
+    .gallery {
+      max-width: 1000px;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 250px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 4px solid var(--shin-border);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      box-shadow: 5px 5px 0px var(--shin-border);
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      z-index: 10;
+    }
+
+    /* 文本内容 */
+    .love-text {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 22px;
+      background: white;
+      padding: 40px;
+      border-radius: 30px;
+      border: 4px solid var(--shin-border);
+      box-shadow: 10px 10px 0px var(--shin-red);
+    }
+
+    .love-text p {
+      white-space: pre-line;
+      margin: 20px 0;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px;
+      background: var(--shin-blue);
+      color: white;
+      margin-top: 60px;
+      border-top: 5px solid var(--shin-border);
+    }
+
+    /* 漂浮元素：小新和小白 */
+    .floating-item {
+      position: fixed;
+      pointer-events: none;
+      z-index: 50;
+      animation: floatAround 10s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes floatAround {
+      0% { transform: translate(-100px, 100vh) rotate(0deg); }
+      25% { transform: translate(25vw, 50vh) rotate(90deg); }
+      50% { transform: translate(50vw, 10vh) rotate(180deg); }
+      75% { transform: translate(75vw, 50vh) rotate(270deg); }
+      100% { transform: translate(110vw, 100vh) rotate(360deg); }
+    }
+
+    /* 响应式设计 */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 15px;
+      }
+      header h1 { font-size: 22px; }
+      nav a { font-size: 16px; padding: 5px 10px; }
+      .hero h2 { font-size: 32px; }
+      .days { font-size: 50px; }
+      .card { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>
+      <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663428778326/lyGBzkAWFWhazRUo.png" alt="小新">
+      蜡笔小新主题小站
+    </h1>
+
+    <nav>
+      <a href="#home" onclick="showPage('home'); return false;">首页</a>
+      <a href="#days" onclick="showPage('days'); return false;">恋爱天数</a>
+      <a href="#story" onclick="showPage('story'); return false;">我们的故事</a>
+      <a href="#gallery" onclick="showPage('gallery'); return false;">照片墙</a>
+      <a href="#love" onclick="showPage('love'); return false;">告白</a>
+    </nav>
+  </header>
+
+  <!-- 首页 -->
+  <section id="home" class="page active">
+    <div class="hero">
+      <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663428778326/VCRhMoIWGMivCGGL.webp" class="hero-img" alt="睡衣小新">
+      <h2>遇见你，真是赚到了！</h2>
+      <p>哦吼~ 欢迎来到我们的秘密基地！</p>
+      <button class="btn" onclick="showPage('days')">看看我们在一起多久了</button>
+    </div>
+  </section>
+
+  <!-- 恋爱天数 -->
+  <section id="days" class="page">
+    <div class="days-container">
+      <h2>我们已经在一起</h2>
+      <div class="days" id="loveDays">0 天</div>
+      <p>时间在走，但喜欢你从没停过，就像我对动感超人的爱！ ❤️</p>
+      <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663428778326/NVpNeQgTlgkaEPCQ.jpg" style="width: 150px; margin-top: 20px;" alt="跑步小新">
+    </div>
+  </section>
+
+  <!-- 故事 -->
+  <section id="story" class="page">
+    <h2 style="font-size: 40px; color: var(--shin-blue);">我们的故事</h2>
+    <div class="love-text">
+      <p>
+        世界很大，但我们刚好相遇。
+        就像小新遇见了巧克比，我遇见了你。
+        从第一次见面，到慢慢熟悉，再到彼此陪伴。
+        这里记录着属于我们的“搞怪”故事。
+      </p>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>第一次见面</h3>
+        <p>那一天开始，一切都变得不一样了。哦吼~</p>
+      </div>
+
+      <div class="card" style="box-shadow: 8px 8px 0px var(--shin-red);">
+        <h3>第一次约会</h3>
+        <p>紧张得像面对美冴的拳头一样（开玩笑的）。</p>
+      </div>
+
+      <div class="card" style="box-shadow: 8px 8px 0px var(--shin-yellow);">
+        <h3>未来</h3>
+        <p>希望未来每一天都有你，还有小白！</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 照片墙 -->
+  <section id="gallery" class="page">
+    <h2 style="font-size: 40px; color: var(--shin-red);">我们的照片墙</h2>
+    <div class="gallery">
+      <img src="https://www.imgur.la/images/2026/03/17/027eacd68734d211685afaf0430c1cf0816418afb8cc231e.jpg">
+      <img src="https://www.imgur.la/images/2026/03/17/1921_livephoto.HEIC3866209d1a64ff43.jpg">
+      <img src="https://www.imgur.la/images/2026/03/17/we3.jpg">
+      <img src="https://www.imgur.la/images/2026/03/17/we2.jpg" >
+      <img src="https://www.imgur.la/images/2026/03/17/we3.jpg" >
+      <img src="https://www.imgur.la/images/2026/03/17/we4.jpg">
+    </div>
+    <p style="margin-top: 30px; font-size: 20px;">把这些图片换成你们的照片会更浪漫哦 📷</p>
+  </section>
+
+  <!-- 告白 -->
+  <section id="love" class="page">
+    <h2 style="font-size: 40px; color: var(--shin-yellow); text-shadow: 2px 2px 0px var(--shin-border);">给你的话</h2>
+    <div class="love-text" style="box-shadow: 10px 10px 0px var(--shin-blue);">
+      <p>
+        如果世界有尽头，我希望最后看到的人是你。
+        如果你愿意，我们可以一起去买巧克比，一起遛小白。
+        谢谢你来到我的世界，大姐姐/大哥哥（划掉）亲爱的 ❤️
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>❤️ 蜡笔小新主题 | 只属于我们的网页 | 2026</p>
+  </footer>
+
+  <script>
+    // 页面切换函数
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('active'));
+
+      const targetPage = document.getElementById(pageId);
+      if (targetPage) {
+        targetPage.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // 恋爱天数计算
+    (function initLoveDays() {
+      const startDate = new Date('2024-12-14');
+
+      function updateLoveDays() {
+        const today = new Date();
+        const diff = today - startDate;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        const el = document.getElementById('loveDays');
+        if (el) {
+          el.textContent = `${days} 天`;
+        }
+      }
+
+      updateLoveDays();
+    })();
+
+    // 漂浮元素动画
+    (function initFloatingElements() {
+      const images = [
+        'https://files.manuscdn.com/user_upload_by_module/session_file/310519663428778326/nPrZFxcgFKRlkiGZ.jpg', // 小白
+        'https://files.manuscdn.com/user_upload_by_module/session_file/310519663428778326/lyGBzkAWFWhazRUo.png'  // 小新
+      ];
+      
+      function createFloatingItem() {
+        const item = document.createElement('img');
+        item.src = images[Math.floor(Math.random() * images.length)];
+        item.className = 'floating-item';
+        item.style.width = (Math.random() * 50 + 50) + 'px';
+        item.style.left = (Math.random() * 100) + 'vw';
+        item.style.animationDuration = (Math.random() * 5 + 8) + 's';
+        item.style.animationDelay = (Math.random() * 5) + 's';
+        
+        document.body.appendChild(item);
+        
+        setTimeout(() => {
+          item.remove();
+        }, 15000);
+      }
+
+      setInterval(createFloatingItem, 3000);
+      // 初始创建几个
+      for(let i=0; i<3; i++) createFloatingItem();
+    })();
+  </script>
+</body>
+</html>
